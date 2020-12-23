@@ -132,11 +132,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         hMap.setMarkersClustering(true);
         hMap.setOnMarkerClickListener(marker -> {
+            if ((marker.getTitle() == null) || (marker.getTitle() == "null")) return false;
             Intent intent = new Intent(this, DetailsActivity.class);
             intent.putExtra("stad", marker.getTitle());
             intent.putExtra("city", marker.getSnippet());
             intent.putExtra("lat", marker.getPosition().latitude);
-            intent.putExtra("lng", marker.getPosition().longitude);
             intent.putExtra("lng", marker.getPosition().longitude);
             startActivity(intent);
             return true;
